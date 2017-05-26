@@ -437,10 +437,10 @@ class Build(object):
         else:
             self.buildType = 'Release'
         self.win32 = platform.system() == 'Windows'
-        self.cores = multiprocessing.cpu_count()
+        self.cores = 1 #multiprocessing.cpu_count()
         # Travis CI, GCC crashes if more than 4 cores used.
         if os.environ.get('TRAVIS_OS_NAME', None):
-            self.cores = min(self.cores, 4)
+            self.cores = 1 #min(self.cores, 4)
         if target:
             self.make(target)
 
